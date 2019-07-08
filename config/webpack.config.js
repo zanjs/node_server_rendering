@@ -10,13 +10,14 @@ let entry = {
   user: 'src/js/user/user.js'
 }
 
+const hostCDN = 'http://127.0.0.1:5000/'
 
 module.exports = evn => ({
   mode: evn.production ? 'production' : 'development',
   // 给每个入口 path.reslove 
   entry: Object.keys(entry).reduce((obj, item) => (obj[item] = path.resolve(entry[item])) && obj, {}),
   output: {
-    publicPath: '/',
+    publicPath: evn.production ? hostCDN : '/',
     filename: 'js/[name].[hash:8].js',
     path: path.resolve('dist')
   },
@@ -66,7 +67,7 @@ module.exports = evn => ({
       root: path.resolve() 
     }),
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
+      filename: "css/[name].[hash:6].css",
       chunkFilename: "[id].css"
     }),
     // 将src下的图片资源平移到dist目录
@@ -79,7 +80,13 @@ module.exports = evn => ({
     // HtmlWebpackPlugin 每个入口生成一个html 并引入对应打包生产好的js
     ...Object.keys(entry).map(item => new HtmlWebpackPlugin({
       // 模块名对应入口名称
-      chunks: [item], 
+      chunks: [item],
+      // hash: true,
+      minify: {
+        removeComments: true, // 移除HTML中的注释
+        collapseWhitespace: true, // 删除空白符与换行符
+        minifyCSS: true// 压缩内联css
+      },
       // 输入目录 (可自行定义 这边输入到views下面的_layout)
       filename: path.resolve('views/_layout/' + entry[item].split('/').slice(-2).join('/').replace('js', 'html')),
       // 基准模板

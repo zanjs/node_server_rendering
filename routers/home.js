@@ -2,7 +2,7 @@
 const homeRouter = require('koa-router')()
 let exampleService = require('../service/exampleService.js')
 //创建路由规则
-homeRouter.get(['/', '/index.html', '/index', '/home.html', '/home'], async (ctx, next) => {
+homeRouter.get(['/', '/index.html', '/index', '/default.aspx', '/home'], async (ctx, next) => {
   // 请求数据
   let todoList = await exampleService.getTodoList({name: 'ott'})
   // 替换原来的静态数据
