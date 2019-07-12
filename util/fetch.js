@@ -10,7 +10,7 @@ module.exports = ({url, method, data = {}}) => {
 
   return nodeFetch(url, {
 		method: method || 'get',
-			body:  JSON.stringify(data),
+			body:  data,
 			headers: { 'Content-Type': 'application/json' },
 	}).then(res => res.json())
 
