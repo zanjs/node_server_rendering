@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+.nav {
+  display: inline-block;
+  padding: 4px 10px;
+}
+.list li {
+  color: rebeccapurple;
+}
+.bg-img {
+  width: 200px;
+  height: 200px;
+  background: url(/images/ww.jpg);
+  margin: 10px 0;
+}
+
