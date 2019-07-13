@@ -15,7 +15,7 @@ ul {
 .bg-img {
   width: 200px;
   height: 200px;
-  background: url(/images/ww.jpg);
+  background: url(http://127.0.0.1:5000/images/ww.jpg);
   margin: 10px 0;
 }
 
