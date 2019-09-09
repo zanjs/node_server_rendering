@@ -1,4 +1,7 @@
 # 简介
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/zanjs/node_server_rendering.svg)](https://greenkeeper.io/)
+
   > nodejs搭建多页面服务端渲染
   * 技术点
     1. koa 搭建服务
